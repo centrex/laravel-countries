@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('migration_table_name_table', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
 
             // add fields
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('migration_table_name_table');
+        Schema::dropIfExists('countries');
     }
 };
