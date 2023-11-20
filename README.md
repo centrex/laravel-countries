@@ -18,27 +18,14 @@ composer require centrex/laravel-countries
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-countries-migrations"
+php artisan vendor:publish --tag="countries-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-countries-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-countries-views"
+php artisan vendor:publish --tag="countries-config"
 ```
 
 ## Usage
