@@ -25,7 +25,7 @@ class LaravelCountriesServiceProvider extends ServiceProvider
             ], 'countries-config');
 
             $this->publishes([
-                __DIR__.'/../database/migrations/' => database_path('migrations')
+                __DIR__.'/../database/migrations/' => database_path('migrations'),
             ], 'countries-migrations');
 
             // Publishing the views.
