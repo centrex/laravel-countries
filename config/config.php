@@ -12,5 +12,5 @@ return [
   | The name of the table to create in the database
   |
   */
-  'table_name' => 'countries',
+    'table_name' => 'countries',
 ];

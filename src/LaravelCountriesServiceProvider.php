@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Centrex\LaravelCountries;
 
@@ -21,11 +21,11 @@ class LaravelCountriesServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('countries.php'),
+                __DIR__ . '/../config/config.php' => config_path('countries.php'),
             ], 'countries-config');
 
             $this->publishes([
-                __DIR__.'/../database/migrations/' => database_path('migrations'),
+                __DIR__ . '/../database/migrations/' => database_path('migrations'),
             ], 'countries-migrations');
 
             // Publishing the views.
@@ -52,11 +52,11 @@ class LaravelCountriesServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'countries');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'countries');
 
         // Register the main class to use with the facade
         $this->app->singleton('countries', function () {
-            return new Countries;
+            return new Countries();
         });
     }
 }
