@@ -14,13 +14,13 @@ class CountriesSeeder extends Seeder
     public function run()
     {
         //Empty the countries table
-        DB::table(\Config::get('countries.table_name'))->delete();
+        DB::table(Config::get('countries.table_name'))->delete();
 
         //Get all of the countries
         $countries = (new Countries())->getList();
 
         foreach ($countries as $countryId => $country) {
-            DB::table(\Config::get('countries.table_name'))->insert([
+            DB::table(Config::get('countries.table_name'))->insert([
                 'id'                => $countryId,
                 'capital'           => ((isset($country['capital'])) ? $country['capital'] : null),
                 'citizenship'       => ((isset($country['citizenship'])) ? $country['citizenship'] : null),
