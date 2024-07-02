@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace Centrex\LaravelCountries;
 
-use Centrex\LaravelCountries\Commands\MigrationCommand;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelCountriesServiceProvider extends ServiceProvider
@@ -45,7 +44,7 @@ class LaravelCountriesServiceProvider extends ServiceProvider
             ], 'countries-lang');*/
 
             // Registering package commands.
-            $this->commands([MigrationCommand::class]);
+            // $this->commands([]);
         }
     }
 
