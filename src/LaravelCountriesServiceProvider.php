@@ -55,6 +55,6 @@ class LaravelCountriesServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'countries');
 
         // Register the main class to use with the facade
-        $this->app->singleton('countries', fn(): \Centrex\LaravelCountries\Countries => new Countries());
+        $this->app->singleton('countries', fn (): \Centrex\LaravelCountries\Countries => new Countries());
     }
 }
