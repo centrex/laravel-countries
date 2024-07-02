@@ -38,7 +38,8 @@
     "autoload": {
         "psr-4": {
             "Centrex\\LaravelCountries\\": "src/",
-            "Centrex\\LaravelCountries\\Database\\Factories\\": "database/factories/"
+            "Centrex\\LaravelCountries\\Database\\Factories\\": "database/factories/",
+            "Centrex\\LaravelCountries\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
