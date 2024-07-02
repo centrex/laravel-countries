@@ -2,6 +2,8 @@
 
 declare(strict_types = 1);
 
+namespace Centrex\LaravelCountries\Database\Seeders;
+
 use Centrex\LaravelCountries\Models\Country;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
