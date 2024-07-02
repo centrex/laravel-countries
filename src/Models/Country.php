@@ -1,18 +1,19 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Centrex\LaravelCountries\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * CountryList
- *
  */
 class Country extends Model
 {
     /**
      * @var string
-     * The table for the countries in the database, is "countries" by default.
+     *             The table for the countries in the database, is "countries" by default.
      */
     protected $table;
 
@@ -30,7 +31,6 @@ class Country extends Model
      * @var array
      */
     protected $countries = [];
-
 
     /**
      * Get the countries from the JSON file, if it hasn't already been loaded.
@@ -51,13 +51,13 @@ class Country extends Model
     /**
      * Returns one country
      *
-     * @param string $id The country id
-     *
+     * @param  string  $id  The country id
      * @return array
      */
     public function getOne($id)
     {
         $countries = $this->getCountries();
+
         return $countries[$id];
     }
 
@@ -65,7 +65,6 @@ class Country extends Model
      * Returns a list of countries
      *
      * @param string sort
-     *
      * @return array
      */
     public function getList($sort = null)
@@ -93,17 +92,17 @@ class Country extends Model
             'flag',
         ];
 
-        if (!is_null($sort) && in_array($sort, $validSorts)){
-            uasort($countries, function($a, $b) use ($sort) {
-                if (!isset($a[$sort]) && !isset($b[$sort])){
+        if (!is_null($sort) && in_array($sort, $validSorts)) {
+            uasort($countries, function ($a, $b) use ($sort) {
+                if (!isset($a[$sort]) && !isset($b[$sort])) {
                     return 0;
-                } elseif (!isset($a[$sort])){
+                } elseif (!isset($a[$sort])) {
                     return -1;
-                } elseif (!isset($b[$sort])){
+                } elseif (!isset($b[$sort])) {
                     return 1;
-                } else {
-                    return strcasecmp($a[$sort], $b[$sort]);
                 }
+
+                return strcasecmp($a[$sort], $b[$sort]);
             });
         }
 
@@ -116,7 +115,6 @@ class Country extends Model
      * Will show the value and sort by the column specified in the display attribute
      *
      * @param string display
-     *
      * @return array
      */
     public function getListForSelect($display = 'name')
