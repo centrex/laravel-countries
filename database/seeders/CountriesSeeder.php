@@ -2,7 +2,9 @@
 
 declare(strict_types = 1);
 
+use Centrex\LaravelCountries\Models\Country;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CountriesSeeder extends Seeder
 {
@@ -14,13 +16,13 @@ class CountriesSeeder extends Seeder
     public function run()
     {
         //Empty the countries table
-        DB::table(Config::get('countries.table_name'))->delete();
+        DB::table(config('countries.table_name'))->delete();
 
         //Get all of the countries
-        $countries = (new Countries())->getList();
+        $countries = (new Country())->getList();
 
         foreach ($countries as $countryId => $country) {
-            DB::table(Config::get('countries.table_name'))->insert([
+            DB::table(config('countries.table_name'))->insert([
                 'id'                => $countryId,
                 'capital'           => ((isset($country['capital'])) ? $country['capital'] : null),
                 'citizenship'       => ((isset($country['citizenship'])) ? $country['citizenship'] : null),

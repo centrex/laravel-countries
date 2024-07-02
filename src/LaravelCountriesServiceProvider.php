@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Centrex\LaravelCountries;
 
+use Centrex\LaravelCountries\Commands\MigrationCommand;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelCountriesServiceProvider extends ServiceProvider
@@ -44,7 +45,7 @@ class LaravelCountriesServiceProvider extends ServiceProvider
             ], 'countries-lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+            $this->commands([MigrationCommand::class]);
         }
     }
 
@@ -53,8 +54,5 @@ class LaravelCountriesServiceProvider extends ServiceProvider
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'countries');
-
-        // Register the main class to use with the facade
-        $this->app->singleton('countries', fn (): \Centrex\LaravelCountries\Countries => new Countries());
     }
 }
