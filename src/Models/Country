@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Model;
  * CountryList
  *
  */
-class Country extends Model 
+class Country extends Model
 {
     /**
      * @var string
      * The table for the countries in the database, is "countries" by default.
      */
     protected $table;
-    
+
     /**
      * Constructor.
      *
@@ -23,15 +23,15 @@ class Country extends Model
      */
     public function __construct()
     {
-        $this->table = \Config::get('countries.table_name');
+        $this->table = config('countries.table_name');
     }
-    
+
     /**
      * @var array
      */
     protected $countries = [];
-    
-    
+
+
     /**
      * Get the countries from the JSON file, if it hasn't already been loaded.
      *
@@ -43,11 +43,11 @@ class Country extends Model
         if (is_null($this->countries) || empty($this->countries)) {
             $this->countries = json_decode(file_get_contents(__DIR__ . '/data/countries.json'), true);
         }
-        
+
         //Return the countries
         return $this->countries;
     }
-    
+
     /**
      * Returns one country
      *
@@ -60,7 +60,7 @@ class Country extends Model
         $countries = $this->getCountries();
         return $countries[$id];
     }
-    
+
     /**
      * Returns a list of countries
      *
@@ -72,7 +72,7 @@ class Country extends Model
     {
         //Get the countries list
         $countries = $this->getCountries();
-        
+
         //Sorting
         $validSorts = [
             'capital',
@@ -92,7 +92,7 @@ class Country extends Model
             'currency_symbol',
             'flag',
         ];
-        
+
         if (!is_null($sort) && in_array($sort, $validSorts)){
             uasort($countries, function($a, $b) use ($sort) {
                 if (!isset($a[$sort]) && !isset($b[$sort])){
@@ -106,11 +106,11 @@ class Country extends Model
                 }
             });
         }
-        
+
         //Return the countries
         return $countries;
     }
-    
+
     /**
      * Returns a list of countries suitable to use with a select element in Laravelcollective\html
      * Will show the value and sort by the column specified in the display attribute
@@ -124,7 +124,7 @@ class Country extends Model
         foreach ($this->getList($display) as $key => $value) {
             $countries[$key] = $value[$display];
         }
-        
+
         //return the array
         return $countries;
     }
