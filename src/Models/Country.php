@@ -39,12 +39,12 @@ class Country extends Model
      */
     protected function getCountries()
     {
-        //Get the countries from the JSON file
+        // Get the countries from the JSON file
         if (is_null($this->countries) || empty($this->countries)) {
             $this->countries = json_decode(file_get_contents(__DIR__ . '/data/countries.json'), true);
         }
 
-        //Return the countries
+        // Return the countries
         return $this->countries;
     }
 
@@ -69,10 +69,10 @@ class Country extends Model
      */
     public function getList($sort = null)
     {
-        //Get the countries list
+        // Get the countries list
         $countries = $this->getCountries();
 
-        //Sorting
+        // Sorting
         $validSorts = [
             'capital',
             'citizenship',
@@ -93,20 +93,24 @@ class Country extends Model
         ];
 
         if (!is_null($sort) && in_array($sort, $validSorts)) {
-            uasort($countries, function ($a, $b) use ($sort) {
+            uasort($countries, function ($a, $b) use ($sort): int {
                 if (!isset($a[$sort]) && !isset($b[$sort])) {
                     return 0;
-                } elseif (!isset($a[$sort])) {
+                }
+
+                if (!isset($a[$sort])) {
                     return -1;
-                } elseif (!isset($b[$sort])) {
+                }
+
+                if (!isset($b[$sort])) {
                     return 1;
                 }
 
-                return strcasecmp($a[$sort], $b[$sort]);
+                return strcasecmp((string) $a[$sort], (string) $b[$sort]);
             });
         }
 
-        //Return the countries
+        // Return the countries
         return $countries;
     }
 
@@ -123,7 +127,7 @@ class Country extends Model
             $countries[$key] = $value[$display];
         }
 
-        //return the array
+        // return the array
         return $countries;
     }
 }

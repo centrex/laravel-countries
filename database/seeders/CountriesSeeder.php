@@ -17,10 +17,10 @@ class CountriesSeeder extends Seeder
      */
     public function run()
     {
-        //Empty the countries table
+        // Empty the countries table
         DB::table(config('countries.table_name'))->delete();
 
-        //Get all of the countries
+        // Get all of the countries
         $countries = (new Country())->getList();
 
         foreach ($countries as $countryId => $country) {
